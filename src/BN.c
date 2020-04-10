@@ -250,3 +250,20 @@ int BN_verify(ec_params* in_params,BN_pubkey_t pubk,u32 signers,prj_pt_t R,nn_t 
     }
     return 0;
 }
+
+/* return 1 means check pass ,otherwise return 0*/
+int BN_sign_SignInCheck(BN_context_t ctx,nn_t si,BN_pubkey_t verkey,prj_pt_t Ri){
+    nn c;
+    prj_pt left,right,tmp;
+    H1(verkey,&(ctx->Pi_R),ctx->pubklist,ctx->signers,ctx->message,ctx->len,&c);
+    /* left = g^si */
+    prj_pt_mul_monty(&left,si,&(ctx->params->ec_gen));
+    /* right=Ri*(verkey)^c */
+    prj_pt_mul_monty(&tmp,&c,verkey);
+    prj_pt_add_monty(&right,Ri,&tmp);
+    /* left==right */
+    if(prj_pt_cmp(&left,&right)==0){
+        return 1;
+    }
+    return 0;
+}

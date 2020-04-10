@@ -72,6 +72,9 @@ int BN_sign_recv_R(BN_context_t ctx,u8 in_t[32],prj_pt_t in_R);
 int BN_sign_send_s(BN_context_t ctx,nn_t out_s);
 int BN_sign_recv_s(BN_context_t ctx,nn_t in_s);
 
+/* this function should be used after receive partial signature s and before BN_sign_recv_s, see more details in README.md */
+int BN_sign_SignInCheck(BN_context_t ctx,nn_t si,BN_pubkey_t verkey,prj_pt_t Ri);
+
 int BN_sign_finalize(BN_context_t ctx,prj_pt_t R,nn_t s);
 
 /* return 1 meaning verify successful ;otherwise meaning refuse this signature*/
