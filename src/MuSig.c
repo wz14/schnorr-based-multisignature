@@ -283,3 +283,26 @@ int MuSig_verify(ec_params* in_params,MuSig_pubkey_t pubk,u32 signers,prj_pt_t R
     }
     return 0;
 }
+
+
+/* return 1 means check pass ,otherwise return 0*/
+int MuSig_sign_SignInCheck(MuSig_context_t ctx,nn_t si,MuSig_pubkey_t verkey,prj_pt_t Ri){
+    nn c;
+    H_sig(&(ctx->agg_X),&(ctx->Pi_R),ctx->message,ctx->len,&c);
+    nn ai;
+    H_agg(verkey,ctx->pubklist,ctx->signers,&ai);
+
+    prj_pt left,right,tmp;
+
+    prj_pt_mul_monty(&left,si,&(ctx->params->ec_gen));
+
+    prj_pt_copy(&right,Ri);
+    prj_pt_mul_monty(&tmp,&c,verkey);
+    prj_pt_mul_monty(&tmp,&ai,&tmp);
+    prj_pt_add_monty(&right,&right,&tmp);
+
+    if(prj_pt_cmp(&left,&right)==0){
+        return 1;
+    }
+    return 0;
+}
