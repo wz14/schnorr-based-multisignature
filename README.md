@@ -11,8 +11,9 @@ A implement for BN and MuSig based libecc.
 
 # Usage in linux
 
-```
+```sh
 git clone https://github.com/WangZhuo2000/schnorr-based-multisignature.git
+cd schnorr-based-multisignature
 git submodule init
 make
 ```
