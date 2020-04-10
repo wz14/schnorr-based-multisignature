@@ -9,12 +9,10 @@ A implement for BN and MuSig based libecc.
 - support elliptical curve include secp256k1,secp256r1,...
 - incomplete security
 
-# Library DePendencies
-
 # Usage in linux
 
 ```
-git clone ...
+git clone https://github.com/WangZhuo2000/schnorr-based-multisignature.git
 git submodule init
 make
 ```
