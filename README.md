@@ -1,6 +1,6 @@
-# A implement for schnorr based multi-signature.
+# An implemention for schnorr based multi-signature.
 
-A implement for BN and MuSig based libecc.
+An implementation for BN and MuSig based libecc.
 
 # Features
 
