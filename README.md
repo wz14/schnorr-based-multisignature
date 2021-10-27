@@ -51,4 +51,4 @@ Send to [zhuowangy2k@outlook.com](mailto:zhuowangy2k@outlook.com) if any securit
 
 # License
 
-The source code is licensed under GPL v3. License is available [here](./LICENSE).
+License is available [here](./LICENSE).
