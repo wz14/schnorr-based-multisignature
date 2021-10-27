@@ -14,7 +14,7 @@ An implementation for BN and MuSig based libecc.
 ```sh
 git clone https://github.com/WangZhuo2000/schnorr-based-multisignature.git
 cd schnorr-based-multisignature
-git submodule init
+git submodule update --init
 make
 ```
 
